@@ -49,6 +49,8 @@ localhost:3000/assets/bitcoin
 ```
 
 ### New functionality
+NOTE: Ensure POST requests include the `Content-Type: application/json` header.
+
 #### Auth
 Creates new users and authenticates existing users. 
 
