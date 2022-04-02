@@ -1,3 +1,7 @@
+/*
+ * Model representation of a user
+ */
+
 const { Model } = require('objection');
 const Knex = require('knex');
 

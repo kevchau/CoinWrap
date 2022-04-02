@@ -3,7 +3,7 @@ const router = express.Router();
 
 const coincap = require("../coincap/coincap.service");
 
-// Search
+// Clone CoinCap API
 router.get('*', async function (req, res, next) {
   try {
     let jsonResponse = await coincap.passRequestPath(req.originalUrl);

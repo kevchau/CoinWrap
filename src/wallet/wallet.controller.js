@@ -1,13 +1,7 @@
 const Asset = require("./asset.model");
 const coincap = require("../coincap/coincap.service");
 
-/**
- * Deposit crypto into wallet
- * @param  {string} assetType   Crypto to deposit
- * @param  {string} amount      Amount to deposit
- * @param  {res} res            Express response object 
- * @param  {next} next          Express next function              
- */
+// Deposit crypto into wallet
 exports.depositAsset = async (user, assetType, amount, res, next) => {
 
     try {
@@ -44,6 +38,7 @@ exports.depositAsset = async (user, assetType, amount, res, next) => {
     }
 };
 
+// Withdraw crypto from wallet
 exports.withdrawAsset = async (user, assetType, amount, res, next) => {
 
     try {
@@ -80,6 +75,7 @@ exports.withdrawAsset = async (user, assetType, amount, res, next) => {
     }
 };
 
+// List assets in the user's wallet
 exports.listAssets = async (user, res, next) => {
     let response = { assets: [], totalUSD: 0 };
     let totalValue = 0;

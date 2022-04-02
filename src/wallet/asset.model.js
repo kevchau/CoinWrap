@@ -1,3 +1,7 @@
+/*
+ * Model representation for an asset in a wallet
+ */
+
 const { Model } = require('objection');
 const Knex = require('knex');
 

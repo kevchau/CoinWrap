@@ -1,12 +1,6 @@
 const coincap = require("../coincap/coincap.service");
 
-/**
- * Calculate how much an asset is worth in USD
- * @param  {string} assetType   Asset type
- * @param  {string} amount      Amount of asset
- * @param  {res} res            Express response object 
- * @param  {next} next          Express next function              
- */
+// Calculate how much an asset is worth in USD
 exports.calculateUSD = async (assetType, amount, res, next) => {
 
     let response = {valueUSD: 0};

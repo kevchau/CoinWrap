@@ -5,6 +5,7 @@ const jwt = require('jsonwebtoken');
 const config = require('../config');
 const User = require('./user.model');
 
+// Authenticate the user and generate a token
 exports.login = async (username, password, res, next) => {
 
     try {
@@ -31,6 +32,7 @@ exports.login = async (username, password, res, next) => {
     }
 };
 
+// Create a new user
 exports.createUser = async (username, password, res, next) => {
 
     try {
@@ -58,6 +60,7 @@ exports.createUser = async (username, password, res, next) => {
     }
 };
 
+// Validate the token
 exports.verifyToken = (req, res, next) => {
 
     const authHeader = req.headers['authorization'];
