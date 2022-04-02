@@ -1,5 +1,5 @@
 # CoinWrap
-A wrapper API for CoinCap's API.
+A wrapper API for CoinCap's API with the added ability to authenticate users, add/remove assets, and calculate the USD value of various crypto quantities.
 
 ## Running CoinWrap
 CoinWrap uses express and runs like a standard node app.
