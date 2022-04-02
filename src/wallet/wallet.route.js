@@ -9,7 +9,7 @@ router.post('/deposit', function (req, res, next) {
     let amount = parseFloat(req.body.amount); // Amount to deposit
 
     if (assetType && amount) {
-        walletController.depositAsset(req.user, assetType, amount, res, next);
+        walletController.depositAsset(req.user, assetType.toLowerCase(), amount, res, next);
     } else {
         throw Error('Invalid deposit');
     }
@@ -22,7 +22,7 @@ router.post('/withdraw', function (req, res, next) {
     let amount = parseFloat(req.body.amount); // Amount to withdraw
 
     if (assetType && amount) {
-        walletController.withdrawAsset(req.user, assetType, amount, res, next);
+        walletController.withdrawAsset(req.user, assetType.toLowerCase(), amount, res, next);
     } else {
         throw Error('Invalid withdaw');
     }

@@ -99,7 +99,8 @@ exports.listAssets = async (user, res, next) => {
                 assetJSON.valueUSD = valueUSD.toFixed(2);
                 totalValue += valueUSD;
             } else {
-                throw Error(`USD rate for ${assetJSON.assetType} not found`)
+                // Coincap doesn't provide usd rate for all assets
+                assetJSON.valueUSD = "unknown";
             }
 
             response.assets.push(assetJSON);

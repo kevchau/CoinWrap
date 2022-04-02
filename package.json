@@ -6,7 +6,8 @@
   "scripts": {
     "start": "node ./src/server.js",
     "seed": "node ./src/db/db.seed.js",
-    "test": "set DB_FILE=test.sqlite3&& node ./src/db/db.seed.js && jest --detectOpenHandles --forceExit"
+    "test": "set DB_FILE=test.sqlite3&& node ./src/db/db.seed.js && jest --detectOpenHandles --forceExit",
+    "test-linux": "DB_FILE=test.sqlite3 && node ./src/db/db.seed.js && jest --detectOpenHandles --forceExit"
   },
   "dependencies": {
     "cookie-parser": "~1.4.4",
