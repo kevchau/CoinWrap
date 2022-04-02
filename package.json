@@ -4,8 +4,9 @@
   "description": "A wrapper API for CoinCap",
   "main": "app.js",
   "scripts": {
-    "start": "node ./src/app.js",
-    "seed": "node ./src/db/db.seed.js"
+    "start": "node ./src/server.js",
+    "seed": "node ./src/db/db.seed.js",
+    "test": "set DB_FILE=test.sqlite3&& node ./src/db/db.seed.js && jest --detectOpenHandles --forceExit"
   },
   "dependencies": {
     "cookie-parser": "~1.4.4",

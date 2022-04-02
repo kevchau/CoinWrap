@@ -99,8 +99,9 @@ exports.listAssets = async (user, res, next) => {
 
             if (rateJSON.data) {
                 let rateUSD = parseFloat(rateJSON.data.rateUsd);
-                assetJSON.valueUSD = rateUSD * assetJSON.quantity;
-                totalValue += assetJSON.valueUSD;
+                let valueUSD = rateUSD * assetJSON.quantity;
+                assetJSON.valueUSD = valueUSD.toFixed(2);
+                totalValue += valueUSD;
             } else {
                 throw Error(`USD rate for ${assetJSON.assetType} not found`)
             }

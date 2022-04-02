@@ -21,10 +21,6 @@ app.use('/wallet', walletRouter);
 app.use('/calculator', calculatorRouter);
 app.use(/^\/((?!wallet|calculator|auth).+)/, coincapRouter);
 
-app.listen(config.express.port, () => {
-  console.log(`CoinWrap listening on port ${config.express.port}`)
-});
-
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));

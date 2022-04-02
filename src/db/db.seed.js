@@ -5,18 +5,10 @@
 var fs = require('fs');
 const sqlite3 = require('sqlite3');
 
-var config = require('./../config');
+var config = require('../config');
 
-// Delete existing database
-if (fs.existsSync(config.db.dbFile)) {
-    fs.unlinkSync(config.db.dbFile);
-}
-
-// Create new database
-var db = new sqlite3.Database(config.db.dbFile);
-
-function createAssetsTable() {
-    db.run(
+function createAssetsTable(db) {
+    return db.run(
         `CREATE TABLE assets (
             assetID INTEGER PRIMARY KEY,
             user TEXT NOT NULL,
@@ -27,8 +19,8 @@ function createAssetsTable() {
     );
 }
 
-function createUsersTable() {
-    db.run(
+function createUsersTable(db) {
+    return db.run(
         `CREATE TABLE users (
             userID INTEGER PRIMARY KEY,
             user TEXT NOT NULL,
@@ -39,6 +31,26 @@ function createUsersTable() {
         )`);
 }
 
-createAssetsTable();
-createUsersTable();
+function initDB() {
+    // Delete existing database
+    if (fs.existsSync(config.db.dbFile)) {
+        fs.unlinkSync(config.db.dbFile);
+    }
+
+    // Create new database
+    let db = new sqlite3.Database(config.db.dbFile);
+
+    createAssetsTable(db);
+    createUsersTable(db);
+};
+
+if (require.main === module) {
+    initDB();
+}
+
+module.exports = initDB;
+
+
+
+
 
