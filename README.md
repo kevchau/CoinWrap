@@ -53,7 +53,7 @@ localhost:3000/assets/bitcoin
 Creates new users and authenticates existing users. 
 
 ##### **POST** /auth/new
-Create a new user
+Create a new user.
 
 Request
 | Key | Value Description |
