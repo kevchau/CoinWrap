@@ -1,6 +1,5 @@
 process.env.DB_FILE = "test.sqlite3";
 
-//jest.setTimeout(100000000);
 jest.mock('./../coincap/coincap.service');
 const Asset = require("./asset.model");
 const walletController = require('./wallet.controller');

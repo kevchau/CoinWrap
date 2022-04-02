@@ -110,6 +110,26 @@
 								"exec": [
 									"pm.test(\"Status code is 200\", function () {\r",
 									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Test asset data length\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.data.length).to.gte(1);\r",
+									"\r",
+									"    jsonData.data.forEach(function (asset) {\r",
+									"        pm.expect(asset).to.have.property('id');\r",
+									"        pm.expect(asset).to.have.property('rank');\r",
+									"        pm.expect(asset).to.have.property('symbol');\r",
+									"        pm.expect(asset).to.have.property('name');\r",
+									"        pm.expect(asset).to.have.property('supply');\r",
+									"        pm.expect(asset).to.have.property('maxSupply');\r",
+									"        pm.expect(asset).to.have.property('marketCapUsd');\r",
+									"        pm.expect(asset).to.have.property('volumeUsd24Hr');\r",
+									"        pm.expect(asset).to.have.property('priceUsd');\r",
+									"        pm.expect(asset).to.have.property('changePercent24Hr');\r",
+									"        pm.expect(asset).to.have.property('vwap24Hr');\r",
+									"        pm.expect(asset).to.have.property('explorer');\r",
+									"    });\r",
 									"});"
 								],
 								"type": "text/javascript"
@@ -140,6 +160,11 @@
 								"exec": [
 									"pm.test(\"Status code is 200\", function () {\r",
 									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Asset is bitcoin\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.data.id).to.eql('bitcoin');\r",
 									"});"
 								],
 								"type": "text/javascript"
@@ -171,6 +196,17 @@
 								"exec": [
 									"pm.test(\"Status code is 200\", function () {\r",
 									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Test asset history length\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.data.length).to.gte(1);\r",
+									"\r",
+									"    jsonData.data.forEach(function (asset) {\r",
+									"        pm.expect(asset).to.have.property('priceUsd');\r",
+									"        pm.expect(asset).to.have.property('time');\r",
+									"        pm.expect(asset).to.have.property('date');\r",
+									"    });\r",
 									"});"
 								],
 								"type": "text/javascript"
@@ -209,6 +245,18 @@
 								"exec": [
 									"pm.test(\"Status code is 200\", function () {\r",
 									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Test asset markets length\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.data.length).to.gte(1);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Test asset markets are for bitcoin\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    jsonData.data.forEach(function(market) {\r",
+									"        pm.expect(market.baseId + market.quoteId).to.include('bitcoin');\r",
+									"    });\r",
 									"});"
 								],
 								"type": "text/javascript"
@@ -246,6 +294,19 @@
 								"exec": [
 									"pm.test(\"Status code is 200\", function () {\r",
 									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Test asset rates length\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.data.length).to.gte(1);\r",
+									"\r",
+									"    jsonData.data.forEach(function (asset) {\r",
+									"        pm.expect(asset).to.have.property('id');\r",
+									"        pm.expect(asset).to.have.property('symbol');\r",
+									"        pm.expect(asset).to.have.property('currencySymbol');\r",
+									"        pm.expect(asset).to.have.property('type');\r",
+									"        pm.expect(asset).to.have.property('rateUsd');\r",
+									"    });\r",
 									"});"
 								],
 								"type": "text/javascript"
@@ -276,6 +337,11 @@
 								"exec": [
 									"pm.test(\"Status code is 200\", function () {\r",
 									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Rate is for bitcoin\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.data.id).to.eql('bitcoin');\r",
 									"});"
 								],
 								"type": "text/javascript"
@@ -312,6 +378,23 @@
 								"exec": [
 									"pm.test(\"Status code is 200\", function () {\r",
 									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Test asset exchanges length\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.data.length).to.gte(1);\r",
+									"\r",
+									"    jsonData.data.forEach(function (asset) {\r",
+									"        pm.expect(asset).to.have.property('exchangeId');\r",
+									"        pm.expect(asset).to.have.property('rank');\r",
+									"        pm.expect(asset).to.have.property('name');\r",
+									"        pm.expect(asset).to.have.property('percentTotalVolume');\r",
+									"        pm.expect(asset).to.have.property('volumeUsd');\r",
+									"        pm.expect(asset).to.have.property('tradingPairs');\r",
+									"        pm.expect(asset).to.have.property('socket');\r",
+									"        pm.expect(asset).to.have.property('exchangeUrl');\r",
+									"        pm.expect(asset).to.have.property('updated');\r",
+									"    });\r",
 									"});"
 								],
 								"type": "text/javascript"
@@ -342,41 +425,11 @@
 								"exec": [
 									"pm.test(\"Status code is 200\", function () {\r",
 									"    pm.response.to.have.status(200);\r",
-									"});"
-								],
-								"type": "text/javascript"
-							}
-						}
-					],
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "{{APP_URL}}/markets",
-							"host": [
-								"{{APP_URL}}"
-							],
-							"path": [
-								"markets"
-							]
-						}
-					},
-					"response": []
-				}
-			]
-		},
-		{
-			"name": "Markets",
-			"item": [
-				{
-					"name": "Get Markets",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"exec": [
-									"pm.test(\"Status code is 200\", function () {\r",
-									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Exchange is kraken\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.data.exchangeId).to.eql('kraken');\r",
 									"});"
 								],
 								"type": "text/javascript"
@@ -402,6 +455,61 @@
 			]
 		},
 		{
+			"name": "Markets",
+			"item": [
+				{
+					"name": "Get Markets",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Test markets length\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.data.length).to.gte(1);\r",
+									"\r",
+									"    jsonData.data.forEach(function (asset) {\r",
+									"        pm.expect(asset).to.have.property('exchangeId');\r",
+									"        pm.expect(asset).to.have.property('rank');\r",
+									"        pm.expect(asset).to.have.property('baseSymbol');\r",
+									"        pm.expect(asset).to.have.property('baseId');\r",
+									"        pm.expect(asset).to.have.property('quoteSymbol');\r",
+									"        pm.expect(asset).to.have.property('quoteId');\r",
+									"        pm.expect(asset).to.have.property('priceQuote');\r",
+									"        pm.expect(asset).to.have.property('priceUsd');\r",
+									"        pm.expect(asset).to.have.property('volumeUsd24Hr');\r",
+									"        pm.expect(asset).to.have.property('percentExchangeVolume');\r",
+									"        pm.expect(asset).to.have.property('tradesCount24Hr');\r",
+									"        pm.expect(asset).to.have.property('updated');\r",
+									"    });\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{APP_URL}}/markets",
+							"host": [
+								"{{APP_URL}}"
+							],
+							"path": [
+								"markets"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
 			"name": "Candles",
 			"item": [
 				{
@@ -413,6 +521,20 @@
 								"exec": [
 									"pm.test(\"Status code is 200\", function () {\r",
 									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Test candles length\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.data.length).to.gte(1);\r",
+									"\r",
+									"    jsonData.data.forEach(function (asset) {\r",
+									"        pm.expect(asset).to.have.property('open');\r",
+									"        pm.expect(asset).to.have.property('high');\r",
+									"        pm.expect(asset).to.have.property('low');\r",
+									"        pm.expect(asset).to.have.property('close');\r",
+									"        pm.expect(asset).to.have.property('volume');\r",
+									"        pm.expect(asset).to.have.property('period');\r",
+									"    });\r",
 									"});"
 								],
 								"type": "text/javascript"
@@ -546,6 +668,13 @@
 								"exec": [
 									"pm.test(\"Status code is 200\", function () {\r",
 									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Wallet contains bitcoin\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.assets[0].assetType).to.eql('bitcoin');\r",
+									"    pm.expect(jsonData.assets[0].quantity).to.eql(3.5);\r",
+									"    pm.expect(jsonData.assets[0].valueUSD).to.eql(jsonData.totalUSD);\r",
 									"});"
 								],
 								"type": "text/javascript"
@@ -582,6 +711,11 @@
 								"exec": [
 									"pm.test(\"Status code is 200\", function () {\r",
 									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Got USD value\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(parseFloat(jsonData.valueUSD)).to.gt(10000);\r",
 									"});"
 								],
 								"type": "text/javascript"
