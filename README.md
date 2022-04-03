@@ -30,8 +30,9 @@ npm run test
 The Postman tests cover both new and cloned functionality from CoinCap API.
 1. Download and install Postman from https://www.postman.com/downloads/.
 2. Import `CoinWrap.postman_collection.json` into Postman.
-3. Ensure you have a clean instance by following the "Running CoinWrap" steps above.
-3. Run the collection. 
+3. The URLs for each test use a Collection variable called "APP_URL" which defaults to "http://localhost:3000". If you are not running the app on localhost and on port 3000 then update this variable accordingly.
+4. Ensure you have a clean instance by following the "Running CoinWrap" steps above.
+5. Run the collection. 
 
 
 ## API
